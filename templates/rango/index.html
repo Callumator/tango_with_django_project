@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load staticfiles %} <!-- New line -->
+<html>
+<head>
+<title>Rango</title>
+</head>
+<body>
+<img src="{% static 'images/cat.jpg' %}" alt="Picture of a Cat" />
+<h1>The Students and their cats are:</h1>
+<div>
+ <br />
+<!--<strong>{{ Students }}</strong><br />-->
+
+    {% if Students %}
+      <ul>
+      {% for student in Students %}
+          <li>{{ student.first_name}} {{ student.last_name}} has <strong>{{ student.number_of_cats}}</strong> cats</li>
+          {% if Cats %}
+          <ul>
+            {% for Cat in Cats %}
+                {% if Cat.Student == student %}
+                    <li>{{ Cat.name}}</li>
+                {% endif %}
+             {% endfor %}
+          </ul>
+    {% else %}
+      <strong>There are no cats present.</strong>
+    {% endif %}
+      {% endfor %}
+      </ul>
+ {% else %}
+      <strong>There are no students present.</strong>
+ {% endif %}
+
+
+</div>
+<div>
+<a href="/rango/about/">About Pets of Students</a><br />
+</div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load staticfiles %} <!-- New line -->
+<html>
+<head>
+<title>Rango</title>
+</head>
+<body>
+<img src="{% static 'images/cats_with_fire.jpg' %}" alt="Picture of cats with fire" />
+<h1>All the cats are:</h1>
+<div>
+{% if Cats %}
+      <ul>
+      {% for Cat in Cats %}
+          <li>{{ Cat.name}}</li>
+      {% endfor %}
+      </ul>
+ {% else %}
+      <strong>There are no cats present.</strong>
+ {% endif %}<br />
+</div>
+<div>
+   Click to go back to <a href='/rango/'>Home</a><br />
+     <!-- New line -->
+
+</div>
+</body>
+</html>
